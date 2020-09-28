@@ -2,3 +2,5 @@ language: java
 deploy:
   provider: heroku
   app: heroku-pipeline-example
+  api_key:
+    secure: 8875fdd8-946a-47d1-aae0-4429c55f5455
