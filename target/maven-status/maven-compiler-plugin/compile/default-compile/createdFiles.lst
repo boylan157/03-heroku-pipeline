@@ -1,2 +1,4 @@
-com\example\demo\DemoController.class
-com\example\demo\DemoApplication.class
+no\kristiania\pgr301_10021\Application.class
+no\kristiania\pgr301_10021\repository\NinjaRepository.class
+no\kristiania\pgr301_10021\controller\NinjaController.class
+no\kristiania\pgr301_10021\model\Ninja.class
