@@ -1,7 +1,32 @@
 language: java
 services: docker
-script: bash docker_push
 env:
   global:
-  - secure: lDSsktQ5DQOQGlhYFN0aZHAPxGjbYM1uUl+3x78uwwY++xV+EfzFZQoVH1ff06rovJFISq5MVJvrZoIiH04an5MlIPjkmtPTzrjOpD/govXkJA0yvzHNWIBlfjQcg/SX5OPhYIU3mc6eSG82euzslKNnutaXJg4xnYHot4CKcceisrtY2to6PYgddSivv0f/CBwxNnXZKzq+UkAmctD5xe0LuNlcAcMgFl5tGkUo4iyjzp1FNDFdNzAHe/8daKK/7TufzXh8KsYcxxOhMv2Sp750qIKxfjHLSnabqkps8cenNKXA/0zqjXdEbYurbJhRa8M0NuWREZr1wtCJXgNrXyK4Zj13QdtZp04YwmEWUmIbOygo/k5e2mygW3a1opI74YjaKOBwbH/lNw9uTPRuzXxRvrpIkL0A1/nHAh95xXAuNcOc/kcgYMRCiE/4OWJ4+NYORNL4BIpCqn2WPVN72+3zjThUqfWDeSbD3MnzFXi5b6fSAE75lU98cWOnWZl+5/MjZ8V0zTMby0wgBN1rt0L6czS9b2MpwHy6RtJy55oe70/KeqeS1tBB9lJ00MokdVygAsZvYwEzSueSIHuQWRveVb8dVL9TkfaHVxHMj+7Bb/JY/8P+WQQHfl0ojlgjQKuqPd99UKLgXKMG+izSUER9OWvda262XALVk5qbBRY=
-  - secure: JfFKeYM6LLMfz/esaoMvM2wHOeboyp1Tbeh0o1nKHLPFJvk7v5qFPeKqA/AtLFUreXl7Hr24K2YFuPJj3EA6yMwYbDFFAgn54SG3tDbt4U0RRa97mO1ETnrf30TMD67TVdDljOiZtOX+RdHA7ZThzGAQeUA0eRDyp8qSPaujqnHJ/Te4+S+u3Wfe5uNhkKNi89ivpDRqS1eUNBU7ZA9piNwCMh8Exv3MMQPTDcbkftY60OZF8Y6ReAju5LDDl+E5Z2W18P+eAXqwJZrpbYayv2Ah9qflMb/hMDaBPpgrE8/M+iudRhGb49Lnb80RQRhS+IoUOBw2c68jRxJ5DdKOqbwYBwBCkT8hh41zkBH960/A4t1lKuiOT7iw/4TsXGIZv5EVCu1S34BJokW1XcPYqOjFOP6OJ62HqNbmijjLTySpqhNv9csLnfd22f7gP9E0c0wJFYT32iEpoFt4FuumZMN94b/fckJHXfXS407EnZQncS5OeiHebIi8yuLIsbR4F2VjMhMgdC5UPvx97jCVB34Gt62Ggtkg3sglKTWloCOX4Xw0GYQv71gJtrRbGScMyCJQa2dYf9rEITvdJ5Vy/yXHvjb74HvJoy/xMRLyUAo5Xrf4PyGaEs/9XmE+5wIzb2HTNls0alBN0K3pKT4pzBYraKLSkMVHfZjXEZAW79o=
+    - GCP_PROJECT_ID=pgr301-exam
+    - IMAGE = eu.gcr.io/pgr301-exam/pgr301_10021/devopsexam
+    - CLOUD_RUN_SERVICE=devopsexam
+    - CLOUD_RUN_REGION=europe-north1
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_4960968e7664_key -iv $encrypted_4960968e7664_iv -in pgr301-exam-7a598d26ae61.json.enc -out pgr301-exam-7a598d26ae61.json -d
+  - curl https://sdk.cloud.google.com | bash > /dev/null
+  - source "$HOME/google-cloud-sdk/path.bash.inc"
+  - gcloud auth activate-service-account --key-file=pgr301-exam-7a598d26ae61.json
+  - gcloud auth configure-docker
+  - gcloud config set project "${GCP_PROJECT_ID}"
+  - gcloud components install beta
+
+install: true #no-op
+
+script:
+  - |
+    set -ex;
+    docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
+    docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
+    gcloud beta run deploy "${CLOUD_RUN_SERVICE}" \
+      --image="${IMAGE}:${TRAVIS_COMMIT}" \
+      --platform=managed \
+      --region="${CLOUD_RUN_REGION}" \
+      --allow-unauthenticated;
+    set +x
