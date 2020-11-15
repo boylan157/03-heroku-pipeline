@@ -38,4 +38,6 @@ public class Ninja implements Serializable{
     public void setKatana(String katana) {
         this.katana = katana;
     }
+
+
 }

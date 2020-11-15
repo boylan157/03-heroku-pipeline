@@ -11,5 +11,6 @@ import java.util.List;
 @Repository
 public interface NinjaRepository extends CrudRepository<Ninja, Long> {
 
+    public List<Ninja> findNinjaById(Long id);
     public List<Ninja> findByName(String name);
 }

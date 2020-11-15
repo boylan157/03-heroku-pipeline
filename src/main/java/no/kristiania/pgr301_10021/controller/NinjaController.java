@@ -10,10 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/ninjas")
@@ -22,20 +19,22 @@ public class NinjaController {
     @Autowired
     private NinjaRepository ninjaRepository;
 
+
     //Read
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Ninja> index() {
-        Iterable<Ninja> ninjaIterable = ninjaRepository.findAll();
+    public List<Ninja> getNinjas() {
+        Iterable<Ninja> iterableNinja = ninjaRepository.findAll();
         List<Ninja> ninjaList = new ArrayList<>();
-        ninjaIterable.forEach(a -> ninjaList.add(a));
+        iterableNinja.forEach(a -> ninjaList.add(a));
         return ninjaList;
     }
 
+
     @GetMapping(value = "/ninja/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Ninja> getNinjaById(@PathVariable(value = "id") Long ninjaId) {
+        Iterable<Ninja> iterableNinja = ninjaRepository.findNinjaById(ninjaId);
         List<Ninja> ninjaList = new ArrayList<>();
-        Iterable<Ninja> ninjaIterable = ninjaRepository.findAll();
-        ninjaIterable.forEach(a -> ninjaList.add(a));
+        iterableNinja.forEach(a -> ninjaList.add(a));
         return ninjaList;
     }
 
