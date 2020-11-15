@@ -41,13 +41,13 @@ public class NinjaControllerIntegrationTest {
                 HttpMethod.GET, entity, String.class);
         assertNotNull(response.getBody());
     }
-
+/*
     @Test
     public void testGetNinjaId(){
         Ninja ninja = testRestTemplate.getForObject(getUrl() + "/ninjas/1", Ninja.class);
         assertNotNull(ninja.getName());
     }
-
+*/
     @Test
     public void testCreateNinja(){
         Ninja ninja = new Ninja();
