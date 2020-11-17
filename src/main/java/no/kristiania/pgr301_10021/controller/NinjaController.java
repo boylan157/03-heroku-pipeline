@@ -11,10 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/ninjas")
 public class NinjaController {
+
+    private static final Logger LOG = Logger.getLogger(NinjaController.class.getName());
 
     @Autowired
     private NinjaRepository ninjaRepository;
@@ -26,6 +29,7 @@ public class NinjaController {
         Iterable<Ninja> iterableNinja = ninjaRepository.findAll();
         List<Ninja> ninjaList = new ArrayList<>();
         iterableNinja.forEach(a -> ninjaList.add(a));
+        LOG.info("Ninja list was requested");
         return ninjaList;
     }
 
@@ -35,6 +39,7 @@ public class NinjaController {
         Iterable<Ninja> iterableNinja = ninjaRepository.findNinjaById(ninjaId);
         List<Ninja> ninjaList = new ArrayList<>();
         iterableNinja.forEach(a -> ninjaList.add(a));
+        LOG.info(String.format("Ninja requested with id %d", ninjaId));
         return ninjaList;
     }
 
