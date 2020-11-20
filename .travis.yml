@@ -7,7 +7,6 @@ env:
   - CLOUD_RUN_SERVICE=devopsexam
   - CLOUD_RUN_REGION=europe-north1
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
-  - secure: k3Z277JSi+SfaM4CRg+qULmUXecfYIne6f1nrO/1SSGDmS7gCCxD7bfiuc9gypl3UPSdh1bZtAjeqrKyKuXkqG2vzFARWqsYO2g63GFJbOWK/A0fyeOhqQUZ+WuNWCuxf4q99QchiUIEreIAukYnSobqrO8vJwo8/JyOYZ99EGJEamzFzPeBw3LkiT+LevSVOCJVOq4xtl4wHmzH2l8C8SyItkodg6PBmQ9LGcie+vNKMDHeAsxrGEradf962hSBGYl6FLbrWO+YcrZ7njX6AbT51N8uOKQDeAP96L7utZPZvXU8hAcvlPs1vWMeOcxfTPdwOfg1erCZ3diTlRYYS26skHj0sXzXNov1h4xRolED1RezU30HXYR0wESnNHKwIDgEnRM/UinYXpq9vvUl+suAjNTa1QmIVxDZJw/a0VkG26MNa0FOJvwie2fZRwAXKpfXR4kOfHPifwweafWCs3pFpwwWmblhHjAUtNUJMagR6wvE2IgRCLxd+sv1DK6yt6R8y3xGHibr4/xiim5sNvDlZOEqCDWeQeOtuItuSQjzG+idvza/ogyE2qD5p/OpM/FIvrOdQ8gI5BB6SJcw/dUkI8VqCP+dZfC4fwBNf3L8ZBgQ1AKwWFqnDRLFhUs1auQ0s7ITyDXDWo7ogbW6mamvVYDnbOZ2PTLxEBEgFJc=
 before_install:
 - openssl aes-256-cbc -K $encrypted_844ab987599f_key -iv $encrypted_844ab987599f_iv
   -in pgr301-exam-86e55e82bbb5.json.enc -out pgr301-exam-86e55e82bbb5.json -d
