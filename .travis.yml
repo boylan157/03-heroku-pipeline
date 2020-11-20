@@ -2,34 +2,30 @@ language: java
 services: docker
 env:
   global:
-    - GCP_PROJECT_ID=pgr301-exam
-    - IMAGE = eu.gcr.io/pgr301-exam/pgr301_10021/devopsexam
-    - CLOUD_RUN_SERVICE=devopsexam
-    - CLOUD_RUN_REGION=europe-north1
-    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
-  ##  - secure: "lc0R4g1DJjnyyQh7q6bGQS9LSKddzi0wsZ8+8Ls2MQgxJu7o3FXmhwj72mtjinJMgRA19PtBc5ki1XQj31B+usMzgrueT7Q3rJKPk08161th42b8W8z40xPVahuUVdE2xv9b/z4raL+ES8jFLYx32Eo8yyifAgkk3R0ZdBSP3WmfRhfZvjy3GsGgBV5ZEkhu0AolxI5mAK5ccrFmuVnskdqvEglw+YrlR6Q4gK/5scNL/2I/5z/yv/dTUCTVaBmho53oWUpXSKnTbh0RZ/1hloZShedZS3AQ5TE9vTSB5d6NYGnsObbqaN0zRPRA65stIeRNBlbNjNWJ+z8jnu75CwLyP4SOGpu2bbSfHxBhykpxWqTlDYe6STgyrEbO2vc46hyvDHbgmttUAWGPYS+DW+j9DP4qPfkVqDAkbQko8hgVYuUrPN8tpKjCUpBmFxDJt3uqHoIkhQhqoPjVVHzuRVAV4PXEfk1N+WxvkpItPr+OWNj56HDDLULXEqoXJCsiWAHMARllOt7oIkq7xzdtL+QO9bunpja1Fvs2vyEt+Y54CjnmUrJom4a5xKJPzj2HW3M6zlVOH3YGaO0I8HoUsOCHNjDkEhhj2PXtXTXx+GewIV+VBU+8fEG/ezkiALePNxLv96kzVjrg1JJ+1coLk9ERUD2VvnzXUC1mRTwgHPE="
-  ##  - secure: "IoHwp2eHcUV65DIhaFXUuQswfldpwjeb6dmr0IKV06FnHFNQz7g+Gak4H1wnGhE8YDFAFmhrFae31qpznoeYTC/HEOW9fqXI86j/4X4nJRg0cNQv3dQo/l8nlVs9Kgos0stVXTd+B9mr2VFRWTBzeR7eAv+bSyzMTO018LFIqJdBxxg+mklmJKPTslii6Q/Yx8i/QTBDUjzJGIz8k+DcrkN67/pKjIgBpPSa9Lz+DEOLS81MAhKPTwjzTjw6/v2LkcwvUBSOBKl+2HUik0s1ILGtiUjpUGeOghdrhDGzM6Cnymspgfds2t+k4iH7LuuBiB764vFJE//7pQO1hImHzAIuOxfCni+Eq0dRW/FEjczFmh6ELtqEw+D1Nkdru50xSs5wEm0C6O10F1KuMKmlDCqJydFeg3Z91+MSy6KE43ghYRf1JvsW067es7e0XAgDz6J+1Nedn/IEGYD6Aie8ouBvcsnDZ0XTX7eY1SexwVtZikAqQ3oa1DzAa3fS8Y6Up5asuFBHeqfiMhhvpZGZG3/3VwuOVqF+iDwYOycghCcVlQ5yVAVgKF/AirgvA6UuMX8YbQqVPCuWgnb11e7MgUFlxxF/Cal7dtpVqg+wLOQ1n8G7nfdQQYxqst79j3lcf8KGpPldU89eVhpFmbSG8CPoJ1pauP6eWfEaV3QOj9g="
-
-
+  - GCP_PROJECT_ID=pgr301-exam
+  - IMAGE = eu.gcr.io/pgr301-exam/pgr301_10021/devopsexam
+  - CLOUD_RUN_SERVICE=devopsexam
+  - CLOUD_RUN_REGION=europe-north1
+  - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - secure: k3Z277JSi+SfaM4CRg+qULmUXecfYIne6f1nrO/1SSGDmS7gCCxD7bfiuc9gypl3UPSdh1bZtAjeqrKyKuXkqG2vzFARWqsYO2g63GFJbOWK/A0fyeOhqQUZ+WuNWCuxf4q99QchiUIEreIAukYnSobqrO8vJwo8/JyOYZ99EGJEamzFzPeBw3LkiT+LevSVOCJVOq4xtl4wHmzH2l8C8SyItkodg6PBmQ9LGcie+vNKMDHeAsxrGEradf962hSBGYl6FLbrWO+YcrZ7njX6AbT51N8uOKQDeAP96L7utZPZvXU8hAcvlPs1vWMeOcxfTPdwOfg1erCZ3diTlRYYS26skHj0sXzXNov1h4xRolED1RezU30HXYR0wESnNHKwIDgEnRM/UinYXpq9vvUl+suAjNTa1QmIVxDZJw/a0VkG26MNa0FOJvwie2fZRwAXKpfXR4kOfHPifwweafWCs3pFpwwWmblhHjAUtNUJMagR6wvE2IgRCLxd+sv1DK6yt6R8y3xGHibr4/xiim5sNvDlZOEqCDWeQeOtuItuSQjzG+idvza/ogyE2qD5p/OpM/FIvrOdQ8gI5BB6SJcw/dUkI8VqCP+dZfC4fwBNf3L8ZBgQ1AKwWFqnDRLFhUs1auQ0s7ITyDXDWo7ogbW6mamvVYDnbOZ2PTLxEBEgFJc=
 before_install:
-  - openssl aes-256-cbc -K $encrypted_844ab987599f_key -iv $encrypted_844ab987599f_iv -in pgr301-exam-86e55e82bbb5.json.enc -out pgr301-exam-86e55e82bbb5.json -d
-  - curl https://sdk.cloud.google.com | bash > /dev/null
-  - source "$HOME/google-cloud-sdk/path.bash.inc"
-  - gcloud auth activate-service-account --key-file=pgr301-exam-86e55e82bbb5.json
-  - gcloud auth configure-docker
-  - gcloud config set project "${GCP_PROJECT_ID}"
-  - gcloud components install beta
-
-install: true #no-op
-
+- openssl aes-256-cbc -K $encrypted_844ab987599f_key -iv $encrypted_844ab987599f_iv
+  -in pgr301-exam-86e55e82bbb5.json.enc -out pgr301-exam-86e55e82bbb5.json -d
+- curl https://sdk.cloud.google.com | bash > /dev/null
+- source "$HOME/google-cloud-sdk/path.bash.inc"
+- gcloud auth activate-service-account --key-file=pgr301-exam-86e55e82bbb5.json
+- gcloud auth configure-docker
+- gcloud config set project "${GCP_PROJECT_ID}"
+- gcloud components install beta
+install: true
 script:
-  - |
-    set -ex;
-    docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
-    docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
-    gcloud beta run deploy "${CLOUD_RUN_SERVICE}" \
-      --image="${IMAGE}:${TRAVIS_COMMIT}" \
-      --platform=managed \
-      --region="${CLOUD_RUN_REGION}" \
-      --allow-unauthenticated;
-    set +x
+- |
+  set -ex;
+  docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
+  docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
+  gcloud beta run deploy "${CLOUD_RUN_SERVICE}" \
+    --image="${IMAGE}:${TRAVIS_COMMIT}" \
+    --platform=managed \
+    --region="${CLOUD_RUN_REGION}" \
+    --allow-unauthenticated;
+  set +x
