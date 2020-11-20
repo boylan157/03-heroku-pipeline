@@ -33,7 +33,7 @@ public class NinjaController {
         return ninjaList;
     }
 
-
+//
     @GetMapping(value = "/ninja/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Ninja> getNinjaById(@PathVariable(value = "id") Long ninjaId) {
         Iterable<Ninja> iterableNinja = ninjaRepository.findNinjaById(ninjaId);
