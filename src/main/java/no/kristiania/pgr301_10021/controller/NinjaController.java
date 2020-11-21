@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("/ninjas")
+
 public class NinjaController {
 
     private static final Logger LOG = Logger.getLogger(NinjaController.class.getName());
@@ -22,9 +22,15 @@ public class NinjaController {
     @Autowired
     private NinjaRepository ninjaRepository;
 
+    @RequestMapping("/")
+    public String homepage(){
+        LOG.info("Home page was opened");
+        return "WELCOME TO NINJA TEMPLE";
+    }
 
     //Read
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping("/ninjas")
     public List<Ninja> getNinjas() {
         Iterable<Ninja> iterableNinja = ninjaRepository.findAll();
         List<Ninja> ninjaList = new ArrayList<>();
