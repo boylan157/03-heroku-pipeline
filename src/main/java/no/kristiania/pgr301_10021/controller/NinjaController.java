@@ -27,7 +27,7 @@ public class NinjaController {
         LOG.info("Home page was opened");
         return "WELCOME TO NINJA TEMPLE";
     }
-
+//
     //Read
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping("/ninjas")
