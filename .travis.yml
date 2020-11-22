@@ -28,4 +28,3 @@ script:
     --region="${CLOUD_RUN_REGION}" \
     --allow-unauthenticated;
   set +x
-//
