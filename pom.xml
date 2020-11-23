@@ -20,6 +20,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-influx</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		<dependency>
 			<groupId>io.logz.logback</groupId>
 			<artifactId>logzio-logback-appender</artifactId>
 			<version>1.0.24</version>

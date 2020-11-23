@@ -39,5 +39,6 @@ public class Ninja implements Serializable{
         this.katana = katana;
     }
 
+    public long getId(){return id;}
 
 }

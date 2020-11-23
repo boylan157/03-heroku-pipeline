@@ -2,12 +2,12 @@ package no.kristiania.pgr301_10021.controller;
 
 
 
+import io.micrometer.core.instrument.MeterRegistry;
 import no.kristiania.pgr301_10021.model.Ninja;
 import no.kristiania.pgr301_10021.repository.NinjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -18,6 +18,9 @@ import java.util.logging.Logger;
 public class NinjaController {
 
     private static final Logger LOG = Logger.getLogger(NinjaController.class.getName());
+
+    public MeterRegistry meterRegistry;
+
 
     @Autowired
     private NinjaRepository ninjaRepository;
@@ -50,9 +53,10 @@ public class NinjaController {
     }
 
     // Create
-    @PostMapping("/ninja")
-    public Ninja createNinja(@RequestBody Ninja ninja){
-        return ninjaRepository.save(ninja);
+    @PostMapping(value = "/tx", consumes = "application/json", produces = "application/json")
+    public void addNinja(@RequestBody Ninja ninja){
+
+        meterRegistry.counter("ninjacount", "ninja", ninja.getName()).increment();
     }
 /*
     // Update
